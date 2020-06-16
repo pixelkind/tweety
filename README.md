@@ -28,6 +28,7 @@ It works perfectly with class based objects, but also with simple object.
 - `repeat` (default: `0`)
 - `yoyo` (default: `false`)
 - `autoStart` (default: `true`)
+- `ease` (default: `linear`)
 
 ## Easings
 
