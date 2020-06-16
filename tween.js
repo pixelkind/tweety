@@ -1,3 +1,9 @@
+/*
+Copyright (c) 2020 Garrit Schaap
+
+Published under the MIT License
+*/
+
 class Tween {
   constructor(target, duration, params) {
     this.target = target;
