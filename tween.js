@@ -107,12 +107,12 @@ class Tween {
     this.isRunning = false;
     this.currentTime = this.duration + this.delay;
     this.lastTimestamp = 0;
+    this.completionHandlers.forEach((handler) => {
+      handler();
+    });
   }
 
   update(timestamp) {
-    this.currentTime += ((timestamp - this.lastTimestamp) / 1000) * this.speed;
-    this.lastTimestamp = timestamp;
-
     if ((this.currentTime >= this.delay && this.speed > 0) || this.speed < 0) {
       let time = (this.currentTime - this.delay) / this.duration;
       time = Math.min(1, Math.max(0, time));
@@ -143,6 +143,13 @@ class Tween {
         }
       }
     }
+
+    this.currentTime += ((timestamp - this.lastTimestamp) / 1000) * this.speed;
+    this.lastTimestamp = timestamp;
+
+    this.updateHandlers.forEach((handler) => {
+      handler();
+    });
 
     if (this.isRunning) {
       window.requestAnimationFrame(this.update.bind(this));
