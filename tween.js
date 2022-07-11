@@ -88,6 +88,7 @@ class Tween {
 
   start() {
     this.isRunning = true;
+    this.lastTimestamp = performance.now();
     this.startHandlers.forEach((handler) => {
       handler();
     });
